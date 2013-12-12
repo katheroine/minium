@@ -102,7 +102,34 @@ class PhotoController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		// validate
+		$rules = array(
+			'title' => 'required',
+			'description' => 'required',
+			'order' => 'numeric'
+		);
+		
+		$validator = Validator::make(Input::all(), $rules);
+		
+		if ($validator->fails())
+		{
+			return Redirect::to('photos/' . $id . '/edit')->withErrors($validator)->withInput(Input::all());
+		}
+		else
+		{
+			// store
+			$photo = Photo::find($id);
+			
+			$photo->title = Input::get('title');
+			$photo->description = Input::get('description');
+			$photo->order = Input::get('order');
+			
+			$photo->save();
+			
+			// redirect
+			Session::flash('message', 'Succesfully updated photo!');
+			return Redirect::to('photos');
+		}
 	}
 
 	/**
