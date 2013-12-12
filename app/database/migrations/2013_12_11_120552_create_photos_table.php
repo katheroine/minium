@@ -19,7 +19,7 @@ class CreatePhotosTable extends Migration {
 			$table->string('title', 255);
 			$table->string('file_path', 255);
 			$table->text('description');
-			$table->integer('order')->default(0)->unique();
+			$table->integer('order')->default(0);
 			
 			$table->timestamps();
 		});
