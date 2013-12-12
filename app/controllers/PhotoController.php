@@ -72,7 +72,11 @@ class PhotoController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		// get the photo
+		$photo = Photo::find($id);
+		
+		// load the view and pass the photo
+		return View::make('photos.show')->with('photo', $photo);
 	}
 
 	/**
