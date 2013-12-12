@@ -9,7 +9,11 @@ class PhotoController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		// get all the photos
+		$photos = Photo::all();
+		
+		// load the view and pass the photos
+		return View::make('photos.index')->with('photos', $photos);
 	}
 
 	/**
