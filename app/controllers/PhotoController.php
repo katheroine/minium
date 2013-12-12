@@ -87,7 +87,11 @@ class PhotoController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// get the photo
+		$photo = Photo::find($id);
+		
+		// load the view and pass the photo
+		return View::make('photos.edit')->with('photo', $photo);
 	}
 
 	/**
