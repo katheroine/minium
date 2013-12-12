@@ -140,7 +140,13 @@ class PhotoController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// delete
+		$photo = Photo::find($id);
+		$photo->delete();
+		
+		// redirect
+		Session::flash('message', 'Successfully delete the photo!');
+		return Redirect::to('photos');
 	}
 
 }
