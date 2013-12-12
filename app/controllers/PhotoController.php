@@ -23,7 +23,8 @@ class PhotoController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// load the view
+		return View::make('photos.create');
 	}
 
 	/**
