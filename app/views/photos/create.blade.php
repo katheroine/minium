@@ -22,7 +22,7 @@
 <!-- if there are creation errors, they will show here -->
 {{ HTML::ul($errors->all()) }}
 
-{{ Form::open(array('url' => 'photos')) }}
+{{ Form::open(array('url' => 'photos', 'files' => true, 'method' => 'post')) }}
 
 	<div class="form-group">
 		{{ Form::label('title', 'Title') }}
@@ -32,6 +32,11 @@
 	<div class="form-group">
 		{{ Form::label('description', 'Description') }}
 		{{ Form::textarea('description', Input::old('description'), array('class' => 'form-control')) }}
+	</div>
+
+	<div class="form-group">
+		{{ Form::label('file', 'File') }}
+		{{ Form::file('file', Input::old('file'), array('class' => 'form-control')) }}
 	</div>
 
 	<div class="form-group">
