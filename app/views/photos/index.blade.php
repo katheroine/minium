@@ -29,6 +29,7 @@
 		<tr>
 			<td>ID</td>
 			<td>Title</td>
+			<td>Miniature</td>
 			<td>Description</td>
 			<td>Order</td>
 			<td>Actions</td>
@@ -39,6 +40,7 @@
 		<tr>
 			<td>{{ $photo->id }}</td>
 			<td>{{ $photo->title }}</td>
+			<td>{{ HTML::image($photo->file_path, $alt="image miniature", $attributes = array('width' => '200px')) }}</td>
 			<td>{{ $photo->description }}</td>
 			<td>{{ $photo->order }}</td>
 
