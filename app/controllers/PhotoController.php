@@ -38,6 +38,7 @@ class PhotoController extends \BaseController {
 		$rules = array(
 			'title' => 'required',
 			'description' => 'required',
+			'file' => 'required',
 			'order' => 'numeric'
 		);
 		
@@ -56,7 +57,22 @@ class PhotoController extends \BaseController {
 			$photo->description = Input::get('description');
 			$photo->order = Input::get('order');
 			
-			$photo->save();
+			$file = Input::file('file');
+			
+			$destinationPath = 'uploads/' . str_random(8) . '/';
+			$fileName = $file->getClientOriginalName();
+
+			$upload_success = $file->move($destinationPath, $fileName);
+
+			if( $upload_success )
+			{
+				$photo->file_path = $destinationPath . $fileName;
+				$photo->save();
+			}
+			else
+			{
+				return Response::json('error', 400);
+			}
 			
 			// redirect
 			Session::flash('message', 'Succesfully uploaded photo!');
@@ -148,5 +164,4 @@ class PhotoController extends \BaseController {
 		Session::flash('message', 'Successfully delete the photo!');
 		return Redirect::to('photos');
 	}
-
 }
