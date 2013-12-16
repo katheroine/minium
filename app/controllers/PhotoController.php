@@ -51,31 +51,9 @@ class PhotoController extends \BaseController {
 		else
 		{
 			// store
-			$photo = new Photo;
-			
-			$photo->title = Input::get('title');
-			$photo->description = Input::get('description');
-			$photo->order = Input::get('order');
-			
-			$file = Input::file('file');
-			
-			$destinationPath = 'uploads/' . str_random(8) . '/';
-			$fileName = $file->getClientOriginalName();
-
-			$upload_success = $file->move($destinationPath, $fileName);
-
-			if( $upload_success )
-			{
-				$photo->file_path = $destinationPath . $fileName;
-				$photo->save();
-			}
-			else
-			{
-				return Response::json('error', 400);
-			}
+			$this->savePhoto();
 			
 			// redirect
-			Session::flash('message', 'Succesfully uploaded photo!');
 			return Redirect::to('photos');
 		}
 	}
@@ -163,5 +141,46 @@ class PhotoController extends \BaseController {
 		// redirect
 		Session::flash('message', 'Successfully delete the photo!');
 		return Redirect::to('photos');
+	}
+	
+	/**
+	 * Save photo file in the storage directory and save photo data in the database.
+	 */
+	private function savePhoto()
+	{
+		$file = Input::file('file');
+
+		$destinationPath = $this->buildPhotoFileDestinationPath();
+		$fileName = $file->getClientOriginalName();
+
+		$upload_success = $file->move($destinationPath, $fileName);
+
+		if( $upload_success )
+		{
+			$photo = new Photo;
+			
+			$photo->title = Input::get('title');
+			$photo->description = Input::get('description');
+			$photo->order = Input::get('order');
+			$photo->file_path = $destinationPath . $fileName;
+			
+			$photo->save();
+			
+			Session::flash('message', 'Succesfully uploaded photo!');
+		}
+		else
+		{
+			Session::flash('error', 'Photo file uploading error!');
+		}
+	}
+	
+	/**
+	 * Bulids storage directory path
+	 * 
+	 * @return string
+	 */
+	private function buildPhotoFileDestinationPath()
+	{
+		return 'uploads/' . str_random(8) . '/';
 	}
 }
