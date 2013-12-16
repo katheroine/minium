@@ -20,7 +20,9 @@
 <h1>Upload a Photo</h1>
 
 <!-- if there are creation errors, they will show here -->
-{{ HTML::ul($errors->all()) }}
+@if ($errors->has())
+	<div class="alert alert-danger">{{ HTML::ul($errors->all()) }}</div>
+@endif
 
 {{ Form::open(array('url' => 'photos', 'files' => true, 'method' => 'post')) }}
 
