@@ -36,17 +36,17 @@ class PhotoController extends \BaseController {
 	{
 		// validate
 		$rules = array(
+			'is_favourite' => 'in:0,1',
 			'title' => 'required',
 			'description' => 'required',
-			'file' => 'required',
-			'order' => 'numeric'
+			'file' => 'required'
 		);
 		
 		$validator = Validator::make(Input::all(), $rules);
 		
 		if ($validator->fails())
 		{
-			return Redirect::to('photos/create')->withErrors($validator)->withInput(Input::all());
+			return Redirect::to('photos/create')->withErrors($validator)->withInput(Input::except('file'));
 		}
 		else
 		{
@@ -98,9 +98,9 @@ class PhotoController extends \BaseController {
 	{
 		// validate
 		$rules = array(
+			'is_favourite' => 'in:0,1',
 			'title' => 'required',
 			'description' => 'required',
-			'order' => 'numeric'
 		);
 		
 		$validator = Validator::make(Input::all(), $rules);
@@ -114,9 +114,9 @@ class PhotoController extends \BaseController {
 			// store
 			$photo = Photo::find($id);
 			
+			$photo->is_favourite = Input::get('is_favourite');
 			$photo->title = Input::get('title');
 			$photo->description = Input::get('description');
-			$photo->order = Input::get('order');
 			
 			$photo->save();
 			
@@ -159,9 +159,9 @@ class PhotoController extends \BaseController {
 		{
 			$photo = new Photo;
 			
+			$photo->is_favourite = Input::get('is_favourite');
 			$photo->title = Input::get('title');
 			$photo->description = Input::get('description');
-			$photo->order = Input::get('order');
 			$photo->file_path = $destinationPath . $fileName;
 			
 			$photo->save();
