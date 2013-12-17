@@ -34,7 +34,7 @@
 			<td>Title</td>
 			<td>Miniature</td>
 			<td>Description</td>
-			<td>Order</td>
+			<td>Is favourite</td>
 			<td>Actions</td>
 		</tr>
 	</thead>
@@ -45,7 +45,7 @@
 			<td>{{ $photo->title }}</td>
 			<td>{{ HTML::image($photo->file_path, $alt="image miniature", $attributes = array('width' => '200px')) }}</td>
 			<td>{{ $photo->description }}</td>
-			<td>{{ $photo->order }}</td>
+			<td>{{ $photo->is_favourite }}</td>
 
 			<!-- we will also add show, edit, and delete buttons -->
 			<td>

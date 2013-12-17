@@ -23,7 +23,7 @@
 		<h2>{{ $photo->title }}</h2>
 		<p>
 			<strong>Description:</strong> {{ $photo->description }}<br>
-			<strong>Order:</strong> {{ $photo->order }}
+			<strong>Is favourite:</strong> {{ $photo->is_favourite }}
 		</p>
 	</div>
 
