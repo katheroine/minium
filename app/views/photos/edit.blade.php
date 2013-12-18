@@ -37,6 +37,11 @@
 	</div>
 
 	<div class="form-group">
+		{{ Form::label('file_path', 'File path') }}
+		{{ Form::text('file_path', null, array('class' => 'form-control')) }}
+	</div>
+
+	<div class="form-group">
 		{{ Form::label('is_favourite', 'Is favourite') }}
 		{{ Form::text('is_favourite', null, array('class' => 'form-control')) }}
 	</div>
