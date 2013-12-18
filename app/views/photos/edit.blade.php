@@ -43,7 +43,7 @@
 
 	<div class="form-group">
 		{{ Form::label('is_favourite', 'Is favourite') }}
-		{{ Form::text('is_favourite', null, array('class' => 'form-control')) }}
+		{{ Form::checkbox('is_favourite', null, null, array('class' => 'form-control')) }}
 	</div>
 
 	{{ Form::submit('Edit the Photo!', array('class' => 'btn btn-primary')) }}
