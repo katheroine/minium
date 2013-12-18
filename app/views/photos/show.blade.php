@@ -25,6 +25,9 @@
 			<strong>Description:</strong> {{ $photo->description }}<br>
 			<strong>Is favourite:</strong> {{ $photo->is_favourite }}
 		</p>
+		<p>
+			{{ HTML::image($photo->file_path) }}
+		</p>
 	</div>
 
 </div>
