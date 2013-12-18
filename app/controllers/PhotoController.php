@@ -101,6 +101,7 @@ class PhotoController extends \BaseController {
 			'is_favourite' => 'in:0,1',
 			'title' => 'required',
 			'description' => 'required',
+			'file_path' => 'required'
 		);
 		
 		$validator = Validator::make(Input::all(), $rules);
@@ -117,6 +118,7 @@ class PhotoController extends \BaseController {
 			$photo->is_favourite = Input::get('is_favourite');
 			$photo->title = Input::get('title');
 			$photo->description = Input::get('description');
+			$photo->file_path = Input::get('file_path');
 			
 			$photo->save();
 			
