@@ -30,39 +30,35 @@
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<td>ID</td>
-			<td>Title</td>
-			<td>Miniature</td>
-			<td>Description</td>
-			<td>Is favourite</td>
-			<td>Actions</td>
+			<td>Data</td>
+			<td style="width: 200px">Miniature</td>
+			<td style="width: 404px">Actions</td>
 		</tr>
 	</thead>
 	<tbody>
 	@foreach($photos as $photo)
 		<tr>
-			<td>{{ $photo->id }}</td>
-			<td>{{ $photo->title }}</td>
+			<td>
+				<p><strong>Title </strong>{{ $photo->title }}</p>
+				<p style="white-space: pre-wrap"><strong>Description </strong>{{ $photo->description }}</p>
+				<p>{{ $photo->is_favourite ? '&#x2764; marked as <strong>favourite</strong>' : null }}</p>
+			</td>
 			<td>{{ HTML::image($photo->file_path, $alt="image miniature", $attributes = array('width' => '200px')) }}</td>
-			<td>{{ $photo->description }}</td>
-			<td>{{ $photo->is_favourite }}</td>
 
 			<!-- we will also add show, edit, and delete buttons -->
 			<td>
+				<!-- show the photo (uses the show method found at GET /photos/{id} -->
+				<a class="btn btn-small btn-success" href="{{ URL::to('photos/' . $photo->id) }}">Show this Photo</a>
 
-				<!-- delete the nerd (uses the destroy method DESTROY /photos/{id} -->
+				<!-- edit this photo (uses the edit method found at GET /photos/{id}/edit -->
+				<a class="btn btn-small btn-info" href="{{ URL::to('photos/' . $photo->id . '/edit') }}">Edit this Photo</a>
+
+				<!-- delete the photo (uses the destroy method DESTROY /photos/{id} -->
 				<!-- we will add this later since its a little more complicated than the other two buttons -->
 				{{ Form::open(array('url' => 'photos/' . $photo->id, 'class' => 'pull-right')) }}
 					{{ Form::hidden('_method', 'DELETE') }}
-					{{ Form::submit('Delete this Photo', array('class' => 'btn btn-warning')) }}
+					{{ Form::submit('Delete this Photo', array('class' => 'btn btn-small btn-warning')) }}
 				{{ Form::close() }}
-
-				<!-- show the nerd (uses the show method found at GET /photos/{id} -->
-				<a class="btn btn-small btn-success" href="{{ URL::to('photos/' . $photo->id) }}">Show this Photo</a>
-
-				<!-- edit this nerd (uses the edit method found at GET /photos/{id}/edit -->
-				<a class="btn btn-small btn-info" href="{{ URL::to('photos/' . $photo->id . '/edit') }}">Edit this Photo</a>
-
 			</td>
 		</tr>
 	@endforeach
