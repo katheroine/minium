@@ -36,7 +36,6 @@ class PhotoController extends \BaseController {
 	{
 		// validate
 		$rules = array(
-			'is_favourite' => 'in:0,1',
 			'title' => 'required',
 			'description' => 'required',
 			'file' => 'required'
@@ -153,7 +152,7 @@ class PhotoController extends \BaseController {
 		{
 			$photo = new Photo;
 			
-			$photo->is_favourite = Input::get('is_favourite');
+			$photo->is_favourite = Input::get('is_favourite') ? true : false;
 			$photo->title = Input::get('title');
 			$photo->description = Input::get('description');
 			$photo->file_path = $destinationPath . $fileName;
