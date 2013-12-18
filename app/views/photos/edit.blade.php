@@ -20,7 +20,9 @@
 <h1>Edit photo #{{ $photo->id }}</h1>
 
 <!-- if there are creation errors, they will show here -->
-{{ HTML::ul($errors->all()) }}
+@if ($errors->has())
+	<div class="alert alert-danger">{{ HTML::ul($errors->all()) }}</div>
+@endif
 
 {{ Form::model($photo, array('route' => array('photos.update', $photo->id), 'method' => 'PUT')) }}
 
