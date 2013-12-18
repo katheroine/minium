@@ -51,7 +51,7 @@ class PhotoController extends \BaseController {
 		else
 		{
 			// store
-			$this->savePhoto();
+			$this->saveStoredPhoto();
 			
 			// redirect
 			return Redirect::to('photos');
@@ -113,17 +113,9 @@ class PhotoController extends \BaseController {
 		else
 		{
 			// store
-			$photo = Photo::find($id);
-			
-			$photo->is_favourite = Input::get('is_favourite');
-			$photo->title = Input::get('title');
-			$photo->description = Input::get('description');
-			$photo->file_path = Input::get('file_path');
-			
-			$photo->save();
+			$this->saveUpdatedPhoto($id);
 			
 			// redirect
-			Session::flash('message', 'Succesfully updated photo!');
 			return Redirect::to('photos');
 		}
 	}
@@ -146,9 +138,9 @@ class PhotoController extends \BaseController {
 	}
 	
 	/**
-	 * Save photo file in the storage directory and save photo data in the database.
+	 * Save the newly stored photo file in the storage directory and save photo data in the database.
 	 */
-	private function savePhoto()
+	private function saveStoredPhoto()
 	{
 		$file = Input::file('file');
 
@@ -174,6 +166,25 @@ class PhotoController extends \BaseController {
 		{
 			Session::flash('error', 'Photo file uploading error!');
 		}
+	}
+	
+	/**
+	 * Save the specified updated photo data in the database.
+	 * 
+	 * @param  int  $id
+	 */
+	private function saveUpdatedPhoto($id)
+	{
+		$photo = Photo::find($id);
+			
+		$photo->is_favourite = Input::get('is_favourite');
+		$photo->title = Input::get('title');
+		$photo->description = Input::get('description');
+		$photo->file_path = Input::get('file_path');
+
+		$photo->save();
+
+		Session::flash('message', 'Succesfully updated photo!');
 	}
 	
 	/**
