@@ -22,8 +22,8 @@
 	<div class="jumbotron text-center">
 		<h2>{{ $photo->title }}</h2>
 		<p>
-			<strong>Description:</strong> {{ $photo->description }}<br>
-			<strong>Is favourite:</strong> {{ $photo->is_favourite }}
+			<strong>Description:</strong><div style="white-space: pre-wrap">{{ $photo->description }}</div>
+			{{ $photo->is_favourite ? '&#x2764; marked as <strong>favourite</strong>' : null }}
 		</p>
 		<p>
 			{{ HTML::image($photo->file_path) }}
