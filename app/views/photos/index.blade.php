@@ -3,6 +3,10 @@
 <head>
 	<title>Photos</title>
 	{{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css') }}
+	{{ HTML::script('//code.jquery.com/jquery-1.10.1.min.js') }}
+	{{ HTML::script('//code.jquery.com/jquery-migrate-1.2.1.min.js') }}
+	{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css') }}
+	{{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js') }}
 </head>
 <body>
 <div class="container">
@@ -26,7 +30,6 @@
 @if (Session::has('error'))
 	<div class="alert alert-danger">{{ Session::get('error') }}</div>
 @endif
-
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
@@ -43,7 +46,10 @@
 				<p style="white-space: pre-wrap"><strong>Description </strong>{{ $photo->description }}</p>
 				<p>{{ $photo->is_favourite ? '&#x2764; marked as <strong>favourite</strong>' : null }}</p>
 			</td>
-			<td>{{ HTML::image($photo->file_path, $alt="image miniature", $attributes = array('width' => '200px')) }}</td>
+			<!--
+			<td>{{ HTML::image($photo->file_path, $alt="image miniature", array('style' => "width: 200px")) }}</td>
+			-->
+			<td><a href="{{ $photo->file_path }}" class="fancybox" rel="group">{{ HTML::image($photo->file_path, '', array('style' => 'width: 200px')) }}</a></td>
 
 			<!-- we will also add show, edit, and delete buttons -->
 			<td>
@@ -64,7 +70,11 @@
 	@endforeach
 	</tbody>
 </table>
-
 </div>
+<script>
+$(document).ready(function() {
+	$("a.fancybox").fancybox();
+});
+</script>
 </body>
 </html>
