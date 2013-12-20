@@ -17,3 +17,5 @@ Route::get('/', function()
 });
 
 Route::resource('photos', 'PhotoController');
+
+Route::resource('photo_categories', 'PhotoCategoryController');
