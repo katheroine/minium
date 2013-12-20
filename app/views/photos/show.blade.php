@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Photos</title>
-	{{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css') }}
-</head>
-<body>
-<div class="container">
+@extends('layouts.main')
+
+@section('content')
 
 <nav class="navbar navbar-inverse">
 	<div class="navbar-header">
@@ -30,6 +25,4 @@
 		</p>
 	</div>
 
-</div>
-</body>
-</html>
+@stop
