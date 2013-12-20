@@ -1,7 +1,13 @@
 <?php
 
 class PhotoCategoryController extends \BaseController {
-
+	
+	/**
+	 * The layout that should be used for responses.
+	 */
+	
+	protected $layout = 'layouts.main';
+	
 	/**
 	 * Display a listing of the resource.
 	 *
