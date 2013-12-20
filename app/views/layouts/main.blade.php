@@ -10,6 +10,7 @@
 </head>
 <body>
 <div class="container">
+	@include('layouts.partials.navbar')
 	@yield('content')
 </div>
 </body>
