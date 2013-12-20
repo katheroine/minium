@@ -1,5 +1,14 @@
 @extends('layouts.main')
 
+@section('assets')
+
+{{ HTML::script('//code.jquery.com/jquery-1.10.1.min.js') }}
+{{ HTML::script('//code.jquery.com/jquery-migrate-1.2.1.min.js') }}
+{{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css') }}
+{{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js') }}
+
+@stop
+
 @section('content')
 
 <h1>All the Photos</h1>
