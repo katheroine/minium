@@ -15,7 +15,11 @@ class PhotoCategoryController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		// get all the photo categories
+		$photo_categories = PhotoCategory::all();
+		
+		// load the view and pass the photo categories
+		return View::make('photo_categories.index')->with('photo_categories', $photo_categories);
 	}
 
 	/**
