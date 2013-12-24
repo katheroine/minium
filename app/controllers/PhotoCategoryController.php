@@ -40,7 +40,26 @@ class PhotoCategoryController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// validate
+		$rules = array(
+			'name' => 'required',
+			'description' => 'required'
+		);
+		
+		$validator = Validator::make(Input::all(), $rules);
+		
+		if ($validator->fails())
+		{
+			return Redirect::to('photo_categories/create')->withErrors($validator)->withInput(Input::all());
+		}
+		else
+		{
+			// store
+			$this->saveStoredPhotoCategory();
+			
+			// redirect
+			return Redirect::to('photo_categories');
+		}
 	}
 
 	/**
@@ -85,5 +104,20 @@ class PhotoCategoryController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+	
+	/**
+	 * Save the newly stored photo category data in the database.
+	 */
+	private function saveStoredPhotoCategory()
+	{
+		$photo_category = new PhotoCategory;
+			
+		$photo_category->name = Input::get('name');
+		$photo_category->description = Input::get('description');
+		
+		$photo_category->save();
+			
+		Session::flash('message', 'Succesfully created photo category!');
 	}
 }
