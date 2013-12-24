@@ -29,7 +29,8 @@ class PhotoCategoryController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// load the view
+		return View::make('photo_categories.create');
 	}
 
 	/**
