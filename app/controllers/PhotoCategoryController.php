@@ -85,7 +85,11 @@ class PhotoCategoryController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// get the photo category
+		$photo_category = PhotoCategory::find($id);
+		
+		// load the view and pass the photo category
+		return View::make('photo_categories.edit')->with('photo_category', $photo_category);
 	}
 
 	/**
