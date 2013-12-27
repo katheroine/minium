@@ -130,7 +130,13 @@ class PhotoCategoryController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// delete
+		$photo_category = PhotoCategory::find($id);
+		$photo_category->delete();
+		
+		// redirect
+		Session::flash('message', 'Successfully deleted the photo category!');
+		return Redirect::to('photo_categories');
 	}
 	
 	/**
