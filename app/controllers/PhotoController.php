@@ -138,8 +138,18 @@ class PhotoController extends \BaseController {
 		$photo = Photo::find($id);
 		$photo->delete();
 		
+		$delete_success = File::delete($photo->file_path);
+		
+		if ($delete_success)
+		{
+			Session::flash('message', 'Successfully delete the photo!');
+		}
+		else
+		{
+			Session::flash('error', 'Photo file deleting error!');
+		}
+		
 		// redirect
-		Session::flash('message', 'Successfully delete the photo!');
 		return Redirect::to('photos');
 	}
 	
@@ -155,7 +165,7 @@ class PhotoController extends \BaseController {
 
 		$upload_success = $file->move($destinationPath, $fileName);
 
-		if( $upload_success )
+		if ($upload_success)
 		{
 			$photo = new Photo;
 			
