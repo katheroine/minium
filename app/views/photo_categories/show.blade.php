@@ -10,6 +10,9 @@
 			<strong>Description:</strong><div style="white-space: pre-wrap">{{ $photo_category->description }}</div>
 		</p>
 		<p>
+			<strong>Photos number: </strong>{{ $photo_category->photos->count() }}
+		</p>
+		<p>
 			<strong>Creation date:</strong> {{ date("d F Y, H:i:s", strtotime($photo_category->created_at)) }}
 		</p>
 		@if ( $photo_category->modified_at )
