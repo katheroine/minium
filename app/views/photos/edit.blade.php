@@ -27,6 +27,11 @@
 	</div>
 
 	<div class="form-group">
+		{{ Form::label('category', 'Category') }}
+		{{ Form::select('category', PhotoCategory::allNames(), $photo->category->id) }}
+	</div>
+
+	<div class="form-group">
 		{{ Form::label('is_favourite', 'Is favourite') }}
 		{{ Form::checkbox('is_favourite', null, null, array('class' => 'form-control')) }}
 	</div>

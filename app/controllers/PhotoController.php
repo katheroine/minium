@@ -106,7 +106,8 @@ class PhotoController extends \BaseController {
 		$rules = array(
 			'title' => 'required',
 			'description' => 'required',
-			'file_path' => 'required'
+			'file_path' => 'required',
+			'category' => 'required'
 		);
 		
 		$validator = Validator::make(Input::all(), $rules);
@@ -187,6 +188,7 @@ class PhotoController extends \BaseController {
 		$photo->title = Input::get('title');
 		$photo->description = Input::get('description');
 		$photo->file_path = Input::get('file_path');
+		$photo->photo_category_id = Input::get('category');
 
 		$photo->save();
 
