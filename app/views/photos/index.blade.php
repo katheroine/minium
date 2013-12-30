@@ -32,7 +32,8 @@
 	@foreach($photos as $photo)
 		<tr>
 			<td>
-				<p><strong>Title </strong>{{ $photo->title }}</p>
+				<p><strong>Title</strong> {{ $photo->title }}</p>
+				<p><strong>Category</strong> {{ $photo->category->name }}</p>
 				<p style="white-space: pre-wrap"><strong>Description </strong>{{ $photo->description }}</p>
 				<p>{{ $photo->is_favourite ? '&#x2764; marked as <strong>favourite</strong>' : null }}</p>
 			</td>
