@@ -15,9 +15,9 @@
 		<p>
 			<strong>Creation date:</strong> {{ date("d F Y, H:i:s", strtotime($photo_category->created_at)) }}
 		</p>
-		@if ( $photo_category->modified_at )
+		@if ( $photo_category->updated_at != $photo_category->created_at )
 		<p>
-			<strong>Last modification date:</strong>  {{ date("d F Y, H:i:s", strtotime($photo_category->modified_at)) }}
+			<strong>Last modification date:</strong>  {{ date("d F Y, H:i:s", strtotime($photo_category->updated_at)) }}
 		</p>
 		@endif
 	</div>

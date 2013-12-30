@@ -14,9 +14,9 @@
 		<p>
 			<strong>Creation date:</strong> {{ date("d F Y, H:i:s", strtotime($photo->created_at)) }}
 		</p>
-		@if ( $photo->modified_at )
+		@if ( $photo->updated_at != $photo->created_at )
 		<p>
-			<strong>Last modification date:</strong>  {{ date("d F Y, H:i:s", strtotime($photo->modified_at)) }}
+			<strong>Last modification date:</strong>  {{ date("d F Y, H:i:s", strtotime($photo->updated_at)) }}
 		</p>
 		@endif
 		<p>
