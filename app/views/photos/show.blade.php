@@ -12,6 +12,14 @@
 			{{ $photo->is_favourite ? '&#x2764; marked as <strong>favourite</strong>' : null }}
 		</p>
 		<p>
+			<strong>Creation date:</strong> {{ date("d F Y, H:i:s", strtotime($photo->created_at)) }}
+		</p>
+		@if ( $photo->modified_at )
+		<p>
+			<strong>Last modification date:</strong>  {{ date("d F Y, H:i:s", strtotime($photo->modified_at)) }}
+		</p>
+		@endif
+		<p>
 			{{ HTML::image($photo->file_path) }}
 		</p>
 	</div>
