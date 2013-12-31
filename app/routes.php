@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/photo/{id}', 'HomeController@photo');
+Route::get('/about', 'HomeController@about');
 
 Route::resource('photos', 'PhotoController');
 
