@@ -3,6 +3,12 @@
 class HomeController extends BaseController {
 
 	/**
+	 * The layout that should be used for responses.
+	 */
+	
+	protected $layout = 'layouts.home';
+	
+	/**
 	 * Display the favourite photos and list of categories.
 	 *
 	 * @return Response
