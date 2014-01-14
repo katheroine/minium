@@ -15,7 +15,15 @@ class HomeController extends BaseController {
 	 */
 	public function index()
 	{
-		return View::make('hello');
+		// get all the photos
+		$favourite_photos = Photo::where('is_favourite', true)->get();
+		
+		// get all the photo categories
+		$photo_categories = PhotoCategory::all();
+		
+		// load the view and pass the photos
+		return View::make('home.index')->with('favourite_photos', $favourite_photos)->with('photo_categories', $photo_categories);
+		
 	}
 	
 	/**
