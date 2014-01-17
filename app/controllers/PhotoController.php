@@ -43,7 +43,6 @@ class PhotoController extends \BaseController {
 		// validate
 		$rules = array(
 			'title' => 'required',
-			'description' => 'required',
 			'file' => 'required',
 			'category' => 'required'
 		);
@@ -105,7 +104,6 @@ class PhotoController extends \BaseController {
 		// validate
 		$rules = array(
 			'title' => 'required',
-			'description' => 'required',
 			'file_path' => 'required',
 			'category' => 'required'
 		);
