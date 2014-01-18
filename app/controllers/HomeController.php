@@ -45,7 +45,17 @@ class HomeController extends BaseController {
 	 */
 	public function photo_category($id)
 	{
-		//
+		// get all the photo categories
+		$photo_categories = PhotoCategory::all();
+		
+		// get choosen photo_category
+		$photo_category = PhotoCategory::find($id);
+		
+		// get all photos from the choosen category
+		$categorised_photos = Photo::where('photo_category_id', $id)->get();
+		
+		// load the view and pass the photos
+		return View::make('home.photo_category')->with('photo_categories', $photo_categories)->with('photo_category', $photo_category)->with('categorised_photos', $categorised_photos);
 	}
 	
 	/**
