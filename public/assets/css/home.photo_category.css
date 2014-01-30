@@ -1,0 +1,12 @@
+#gallery
+{
+	margin: 0 auto;
+}
+	
+.tile
+{
+	display: inline-block;
+	width: 25%;
+	margin: 0;
+	padding: 4px;
+}
