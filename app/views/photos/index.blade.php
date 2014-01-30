@@ -6,6 +6,7 @@
 {{ HTML::script('//code.jquery.com/jquery-migrate-1.2.1.min.js') }}
 {{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css') }}
 {{ HTML::script('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js') }}
+{{ HTML::script('assets/js/photos.index.js') }}
 
 @stop
 
@@ -61,10 +62,5 @@
 	@endforeach
 	</tbody>
 </table>
-<script>
-$(document).ready(function() {
-	$("a.fancybox").fancybox();
-});
-</script>
 
 @stop
