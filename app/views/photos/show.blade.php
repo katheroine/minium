@@ -6,7 +6,7 @@
 
 	<div class="jumbotron text-center">
 		<h2>{{ $photo->title }}</h2>
-		<p><strong>Category:</strong> {{ HTML::link('photo_categories/' . $photo->category->id, $photo->category->name) }}</p>
+		<p><strong>Category:</strong> {{ HTML::link('admin/photo_categories/' . $photo->category->id, $photo->category->name) }}</p>
 		<p>
 			<strong>Description:</strong><div style="white-space: pre-wrap">{{ $photo->description }}</div>
 			{{ $photo->is_favourite ? '&#x2764; marked as <strong>favourite</strong>' : null }}
