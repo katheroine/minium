@@ -9,7 +9,7 @@
 	<div class="alert alert-danger">{{ HTML::ul($errors->all()) }}</div>
 @endif
 
-{{ Form::model($photo_category, array('route' => array('photo_categories.update', $photo_category->id), 'method' => 'PUT')) }}
+{{ Form::model($photo_category, array('route' => array('admin.photo_categories.update', $photo_category->id), 'method' => 'PUT')) }}
 
 	<div class="form-group">
 		{{ Form::label('name', 'Name') }}
