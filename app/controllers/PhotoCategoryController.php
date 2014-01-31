@@ -50,7 +50,7 @@ class PhotoCategoryController extends \BaseController {
 		
 		if ($validator->fails())
 		{
-			return Redirect::to('photo_categories/create')->withErrors($validator)->withInput(Input::all());
+			return Redirect::to('admin/photo_categories/create')->withErrors($validator)->withInput(Input::all());
 		}
 		else
 		{
@@ -58,7 +58,7 @@ class PhotoCategoryController extends \BaseController {
 			$this->saveStoredPhotoCategory();
 			
 			// redirect
-			return Redirect::to('photo_categories');
+			return Redirect::to('admin/photo_categories');
 		}
 	}
 
@@ -110,7 +110,7 @@ class PhotoCategoryController extends \BaseController {
 		
 		if ($validator->fails())
 		{
-			return Redirect::to('photo_categories/' . $id . '/edit')->withErrors($validator)->withInput(Input::all());
+			return Redirect::to('admin/photo_categories/' . $id . '/edit')->withErrors($validator)->withInput(Input::all());
 		}
 		else
 		{
@@ -118,7 +118,7 @@ class PhotoCategoryController extends \BaseController {
 			$this->saveUpdatedPhotoCategory($id);
 			
 			// redirect
-			return Redirect::to('photo_categories');
+			return Redirect::to('admin/photo_categories');
 		}
 	}
 
@@ -136,7 +136,7 @@ class PhotoCategoryController extends \BaseController {
 		
 		// redirect
 		Session::flash('message', 'Successfully deleted the photo category!');
-		return Redirect::to('photo_categories');
+		return Redirect::to('admin/photo_categories');
 	}
 	
 	/**
