@@ -51,7 +51,7 @@ class PhotoController extends \BaseController {
 		
 		if ($validator->fails())
 		{
-			return Redirect::to('photos/create')->withErrors($validator)->withInput(Input::except('file'));
+			return Redirect::to('admin/photos/create')->withErrors($validator)->withInput(Input::except('file'));
 		}
 		else
 		{
@@ -59,7 +59,7 @@ class PhotoController extends \BaseController {
 			$this->saveStoredPhoto();
 			
 			// redirect
-			return Redirect::to('photos');
+			return Redirect::to('admin/photos');
 		}
 	}
 
@@ -112,7 +112,7 @@ class PhotoController extends \BaseController {
 		
 		if ($validator->fails())
 		{
-			return Redirect::to('photos/' . $id . '/edit')->withErrors($validator)->withInput(Input::all());
+			return Redirect::to('admin/photos' . $id . '/edit')->withErrors($validator)->withInput(Input::all());
 		}
 		else
 		{
@@ -120,7 +120,7 @@ class PhotoController extends \BaseController {
 			$this->saveUpdatedPhoto($id);
 			
 			// redirect
-			return Redirect::to('photos');
+			return Redirect::to('admin/photos');
 		}
 	}
 
@@ -148,7 +148,7 @@ class PhotoController extends \BaseController {
 		}
 		
 		// redirect
-		return Redirect::to('photos');
+		return Redirect::to('admin/photos');
 	}
 	
 	/**
