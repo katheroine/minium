@@ -16,6 +16,7 @@ Route::get('/photo/{id}', 'HomeController@photo');
 Route::get('/photo_category/{id}', 'HomeController@photo_category');
 Route::get('/about', 'HomeController@about');
 
-Route::resource('photos', 'PhotoController');
-
-Route::resource('photo_categories', 'PhotoCategoryController');
+Route::group(array('prefix' => 'admin'), function() {
+	Route::resource('photos', 'PhotoController');
+	Route::resource('photo_categories', 'PhotoCategoryController');
+});
